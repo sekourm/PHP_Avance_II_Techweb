@@ -48,6 +48,10 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
         array (
             'Psr\\Log\\' => 8,
         ),
+        'N' => 
+        array (
+            'Nelmio\\CorsBundle\\' => 18,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -148,6 +152,10 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
         ),
         'Monolog\\' => 
         array (

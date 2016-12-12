@@ -1,0 +1,25 @@
+AppBundle\Entity\techSubTasks:
+    type: entity
+    table: t_tech_sub_tasks
+    oneToMany:
+        tasksBySubTasks:
+              targetEntity: techSubTasksByUsers
+              mappedBy: tasksBySubTasks
+    manyToOne:
+      subTasksByTasks:
+        targetEntity: techTasks
+        inversedBy: tasksBySubTasks
+        joinColumn:
+            name: taskId
+            referencedColumnName: id
+    repositoryClass: AppBundle\Repository\techSubTasksRepository
+    id:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+    lifecycleCallbacks: {  }
+    fields:
+      description:
+          type: string

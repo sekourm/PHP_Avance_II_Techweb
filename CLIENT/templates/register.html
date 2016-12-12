@@ -1,0 +1,50 @@
+<div id="login-main">
+    <div class="container login-main">
+        <div class="opacity-register">
+            <div class="col-md-8 login-form">
+                <form class="form-horizontal" role="form" autocomplete="off">
+                    <div class="user-img image-position">
+                        <div ng-hide="file" class="inputWrapper">
+                            <input type="file" class="fileInput hiddens" alt="file" ng-model='file'
+                                   base-sixty-four-input>
+                            <img ng-src="http://www.dadophotography.com/wp/wp-content/uploads/2015/09/camera-logo-512.png"
+                                 class="image-profil">
+                        </div>
+                        <div ng-show="file" class="inputWrapper">
+                            <input type="file" class="fileInput hiddens" alt="file" ng-model='file'
+                                   base-sixty-four-input>
+                            <img ng-src="data:{{file.filetype}};base64,{{file.base64}}" class="image-profil">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="username" class="form-control login-field" value=""
+                               placeholder="Username" id="login-name" autocomplete="off">
+                        <label for="login-name" class="login-name-register"><i class="fa fa-user"
+                                                                               aria-hidden="true"></i></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" ng-model="email" class="form-control login-field" value=""
+                               placeholder="Email" id="login-email" autocomplete="off">
+                        <label for="login-email" class="login-email-register"><i class="fa fa-envelope"></i></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" ng-model="password" class="form-control login-field" value=""
+                               placeholder="Mot de passe" id="login-pass" autocomplete="new-password">
+                        <label for="login-pass" class="login-pass-register"><i
+                                class="glyphicon glyphicon-lock"></i></label>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-lg btn-block"
+                           ng-click="tryToSignup(username,password,email,file)">Inscription</a>
+                    </div>
+                    <div ng-if="message" class="alert alert-danger">
+                        <strong>{{message}}</strong>
+                    </div>
+                </form>
+                <div class="col-md-12">
+                    <a ng-href="#/" class="link">Se Connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

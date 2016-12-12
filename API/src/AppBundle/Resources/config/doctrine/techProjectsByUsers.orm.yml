@@ -1,0 +1,24 @@
+AppBundle\Entity\techProjectsByUsers:
+    type: entity
+    table: t_tech_projects_users
+    manyToOne:
+      usersByProjects:
+        targetEntity: techUsers
+        inversedBy: projectsByUsers
+        joinColumn:
+            name: userId
+            referencedColumnName: id
+      projectsByProjects:
+        targetEntity: techProjects
+        inversedBy: usersByProjects
+        joinColumn:
+            name: projectId
+            referencedColumnName: id
+    repositoryClass: AppBundle\Repository\techProjectsByUsersRepository
+    id:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+    lifecycleCallbacks: {  }

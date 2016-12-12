@@ -1,0 +1,42 @@
+AppBundle\Entity\techUsers:
+    type: entity
+    table: t_tech_users
+    oneToMany:
+        projectsByUsers:
+              targetEntity: techProjectsByUsers
+              mappedBy: usersByProjects
+        subTasksByUsers:
+              targetEntity: techSubTasksByUsers
+              mappedBy: usersBySubTasks
+        usersProjects:
+              targetEntity: techProjects
+              mappedBy: projectsUsers
+    repositoryClass: AppBundle\Repository\techUsersRepository
+    id:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+    lifecycleCallbacks:
+        prePersist: [ insertCreatedAtAuto, insertUpdateAtAuto ]
+    fields:
+      username:
+          type: string
+      email:
+          type: string
+      password:
+          type: string
+      picture:
+          type: text
+          length: 4294967295
+      active:
+          type: boolean
+          option:
+            defaults: 0
+      personalKey:
+          type: string
+      createdAt:
+          type: datetime
+      updatedAt:
+          type: datetime

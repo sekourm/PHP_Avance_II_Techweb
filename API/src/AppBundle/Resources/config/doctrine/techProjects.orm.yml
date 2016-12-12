@@ -1,0 +1,37 @@
+AppBundle\Entity\techProjects:
+    type: entity
+    table: t_tech_projects
+    oneToMany:
+        usersByProjects:
+              targetEntity: techProjectsByUsers
+              mappedBy: projectsByProjects
+        categoriesByProjects:
+              targetEntity: techCategories
+              mappedBy: projectsByCategories
+    manyToOne:
+      projectsUsers:
+        targetEntity: techUsers
+        inversedBy: usersProjects
+        joinColumn:
+            name: userId
+            referencedColumnName: id
+    repositoryClass: AppBundle\Repository\techProjectsRepository
+    id:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+    lifecycleCallbacks:
+        prePersist: [ insertCreatedAtAuto, insertUpdateAtAuto ]
+    fields:
+      name:
+          type: string
+      active:
+          type: boolean
+          option:
+            defaults: 1
+      createdAt:
+          type: datetime
+      updatedAt:
+          type: datetime

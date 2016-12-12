@@ -1,3 +1,7 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+login:
+  path: /authentification/profiles
+  defaults:  { _controller: AppBundle:Profile:authentificationProfiles }
+
+register:
+  path: /add/profiles
+  defaults:  { _controller: AppBundle:Profile:addProfiles }

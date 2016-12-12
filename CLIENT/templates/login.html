@@ -1,0 +1,36 @@
+<div id="login-main">
+    <div class="container login-main">
+        <div class="opacity">
+            <div class="user-img">
+                <img ng-src="http://previews.123rf.com/images/maxborovkov/maxborovkov1507/maxborovkov150700243/42795794-White-welcome-sign-over-confetti-background-Vector-holiday-illustration--Stock-Vector.jpg"
+                     id="login-image" class="img-circle user-img img-thumbnail" alt="">
+            </div>
+            <div class="col-md-8 login-form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <input type="email" ng-model="email" class="form-control login-field" value=""
+                               placeholder="your email" id="login-name" autocomplete="off">
+                        <label for="login-name" class="login-name"><i class="fa fa-envelope"></i></label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" ng-model="password" class="form-control login-field" value=""
+                               placeholder="your password" id="login-pass" autocomplete="new-password">
+                        <label for="login-pass" class="login-pass"><i class="glyphicon glyphicon-lock"></i></label>
+                    </div>
+
+                    <div ng-if="message" class="alert alert-danger">
+                        <strong>{{message}}</strong>
+                    </div>
+
+                    <div class="form-group">
+                        <a class="btn btn-lg btn-block" ng-click="tryToLogin(email,password)">Connexion</a>
+                    </div>
+                </form>
+                <div class="col-md-12">
+                    <a ng-href="#/register" class="link">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
