@@ -1,0 +1,6 @@
+API/app/bootstrap.php.cache
+API/app/cache/*
+API/app/config/parameters.yml
+!API/app/cache/.gitkeep
+.idea/
+API/.idea
