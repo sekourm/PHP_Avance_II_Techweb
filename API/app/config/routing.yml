@@ -1,7 +1,39 @@
 login:
   path: /authentification/profiles
-  defaults:  { _controller: AppBundle:Profile:authentificationProfiles }
+  defaults:  { _controller: AppBundle:Profiles:authentificationProfiles }
 
 register:
   path: /add/profiles
-  defaults:  { _controller: AppBundle:Profile:addProfiles }
+  defaults:  { _controller: AppBundle:Profiles:addProfiles }
+
+addProject:
+  path: /add/project
+  defaults:  { _controller: AppBundle:Projects:addProject }
+
+showProject:
+  path: /show/project
+  defaults:  { _controller: AppBundle:Projects:showProject }
+
+updateTasks:
+  path: /update/tasks
+  defaults:  { _controller: AppBundle:Tasks:updateTasksInCategories }
+
+updateTasksName:
+  path: /modify/name/tasks
+  defaults:  { _controller: AppBundle:Tasks:modifyNameTasks }
+
+createCategorie:
+  path: /create/categorie
+  defaults:  { _controller: AppBundle:Categories:createCategorie }
+
+createTasks:
+  path: /create/tasks
+  defaults:  { _controller: AppBundle:Tasks:createTasks }
+
+createSubTasks:
+  path: /create/subtasks
+  defaults:  { _controller: AppBundle:Tasks:createSubTasks }
+
+updateCheckedSubtasks:
+  path: update/checked/subtasks
+  defaults:  { _controller: AppBundle:Tasks:updateCheckedSubTasks }

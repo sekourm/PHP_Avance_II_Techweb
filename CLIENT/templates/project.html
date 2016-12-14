@@ -60,16 +60,17 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+
                     <form>
                         <div class="col-md-12">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Create Categorie</label>
-                                    <input type="text" ng-model="categorie" class="form-control"
+                                    <input type="text" ng-model="nameCategorie" class="form-control"
                                            placeholder="Create Categorie">
                                 </div>
                                 <button type="submit" class="btn btn-info btn-fill pull-right"
-                                        ng-click="CreateCategorie(categorie)">Create Categorie
+                                        ng-click="createCategories(nameCategorie)">Create Categorie
                                 </button>
                             </div>
                         </div>
@@ -84,26 +85,25 @@
                                         <h3 class="panel-title">List {{listName}}</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <ul dnd-list="list[0]"
-                                            dnd-inserted="dropCallback2(listName,list,index)"
-                                        >
+                                        <ul dnd-list="list[0]" dnd-inserted="dropCallback2(listName,list,index)">
                                             <li ng-repeat="item in list[0]"
                                                 dnd-draggable="item"
                                                 dnd-moved="list[0].splice($index, 1)"
                                                 dnd-inserted="dropCallback(item)"
-                                                dnd-effect-allowed="move"
-                                            >
-                                                <span ng-show="!showmodifytasks">{{item.label}}</span>
-                                                <input ng-show="showmodifytasks" ng-model="item.label"
-                                                       ng-keypress="myFunc($event,tasksname,item.id)"
-                                                       placeholder="{{item.label}}">
+                                                dnd-effect-allowed="move">
+                                                <div class="row">
+                                                    <div class="col-md-8" data-target="#openModel{{item.id}}"
+                                                         data-toggle="modal" style="cursor: pointer">
+                                                        <span ng-show="!showmodifytasks">{{item.label}}</span>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <a class="pull-right" data-toggle="modal"
+                                                           data-target="#myModal{{item.id}}"><span><i
+                                                                class="fa fa-plus-square-o" aria-hidden="true"></i></span></a>
+                                                    </div>
+                                                </div>
 
-                                                <span ng-show="!showmodifytasks" class="pull-right"
-                                                      ng-click="deteletasks(item.id)"><i class="fa fa-times"
-                                                                                         aria-hidden="true"></i></span>
-                                                <a class="pull-right" data-toggle="modal"
-                                                   data-target="#myModal{{item.id}}"><span><i
-                                                        class="fa fa-plus-square-o" aria-hidden="true"></i></span></a>
+                                                <!-- modify tasks name -->
                                                 <div id="myModal{{item.id}}" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -117,17 +117,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label>City</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   placeholder="City"
-                                                                                   ng-model="item.label">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label>About Me</label>
-                                                                            <textarea rows="5" class="form-control"
-                                                                                      ng-model="item.description"
-                                                                                      placeholder="Here can be your description"></textarea>
+                                                                            <input type="text" class="form-control" ng-model="item.label">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -139,27 +129,113 @@
                                                                 </button>
                                                                 <button type="button" data-dismiss="modal"
                                                                         class="btn btn-primary"
-                                                                        ng-click="SaveTasksUpdate(item.id,item.label,item.description,list[1])">
+                                                                        ng-click="modifyTasksName(item.id,item.label)">
                                                                     Save changes
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- end -->
+
+
+
+                                                <div id="openModel{{item.id}}" class="modal fade" role="dialog" data-modal="{{item.id}}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">{{item.label}}</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-8">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>About Me</label>
+                                                                                    <textarea rows="1" class="form-control"
+                                                                                              ng-model="nameSubTasks"
+                                                                                              placeholder="Here can be your description"></textarea>
+                                                                                    <br>
+                                                                                    <button type="button" class="btn btn-success" ng-click="addTache(item.id,nameSubTasks,listName)">
+                                                                                        Ajouter sous tache
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <p class="count_checked_{{item.id}}">{{ item.count_checked[0] }}</p>
+
+                                                                                <div class="progress">
+                                                                                    <div id="progressbar{{item.id}}" class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                                                         aria-valuemin="0" aria-valuemax="100">
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+
+                                                                                    <p></p>
+                                                                                    <div class="checkbox" ng-repeat="c1 in item.sous_tache[0] track by $index">
+                                                                                        <label style="font-size: 1.5em" ng-if="c1.checked == true">
+                                                                                            <!-- ng-change="alert(c1.id)"-->
+                                                                                            <input type="hidden" ng-model="c1.id">
+                                                                                            <input type="checkbox" data-id="{{c1.val}}" ng-click="checkedSubTasks(c1.checked,c1.id,listName,item.id)" class="className" value="{{c1.id}}" checked>
+                                                                                            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                                                            {{c1.description}}
+                                                                                        </label>
+                                                                                        <label style="font-size: 1.5em" ng-if="c1.checked == false">
+                                                                                            <input type="hidden" ng-model="c1.id">
+                                                                                            <input type="checkbox" data-id="{{c1.val}}" ng-click="checkedSubTasks(c1.checked,c1.id,listName,item.id)" value="{{c1.id}}">
+                                                                                            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                                                            {{c1.description}}
+                                                                                        </label>
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <h4>Membres</h4>
+                                                                                <div ng-repeat="c2 in item.users_in_tache[0] track by $index">
+                                                                                    <img ng-src="{{c2.picture}}" height="50px"; width="50px">
+                                                                                    <span>{{c2.username}}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
                                             </li>
                                         </ul>
                                         <a ng-click="showKids(list[1][0])" ng-if="tasksShow == false">Creer une
-                                            tache</a>
+                                            tâche</a>
                                         <div ng-show="isShowing(list[1][0])" ng-if="tasksShow == true">
                                             <div class="form-group">
                                                 <label>Creer une tache</label>
-                                                <input type="text" ng-model="title" class="form-control"
-                                                       placeholder="Create title">
-                                                <input type="text" ng-model="description" class="form-control"
-                                                       placeholder="Tache description">
+                                                <input type="text" ng-model="nameTasks" class="form-control"
+                                                       placeholder="Créer une tâche">
                                             </div>
                                             <button type="submit" class="btn btn-info btn-fill pull-left"
-                                                    ng-click="CreateTasks(list[1],title,description)">Creer tache
+                                                    ng-click="CreateTasks(list[1],nameTasks)">Creer tache
                                             </button>
                                             <button type="button" class="btn btn-danger btn-fill"
                                                     ng-click="changeTasks()">

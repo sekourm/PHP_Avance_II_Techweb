@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\HttpFoundation\Response;
 
-class ProfileController extends Controller
+class ProfilesController extends Controller
 {
     public function addProfilesAction()
     {
@@ -71,7 +71,6 @@ class ProfileController extends Controller
         $serializer = new Serializer($normalizers, $encoders);
 
         $post = $this->getRequest()->getContent();
-
         $post = json_decode($post);
         $password = $post->password;
         $email = $post->email;
@@ -95,7 +94,3 @@ class ProfileController extends Controller
         return $response;
     }
 }
-
-
-
-

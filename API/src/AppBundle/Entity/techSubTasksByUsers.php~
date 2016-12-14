@@ -80,4 +80,32 @@ class techSubTasksByUsers
     {
         return $this->usersBySubTasks;
     }
+    /**
+     * @var \AppBundle\Entity\techSubTasks
+     */
+    private $tasksBySubTasks;
+
+
+    /**
+     * Set tasksBySubTasks
+     *
+     * @param \AppBundle\Entity\techSubTasks $tasksBySubTasks
+     * @return techSubTasksByUsers
+     */
+    public function setTasksBySubTasks(\AppBundle\Entity\techSubTasks $tasksBySubTasks = null)
+    {
+        $this->tasksBySubTasks = $tasksBySubTasks;
+
+        return $this;
+    }
+
+    /**
+     * Get tasksBySubTasks
+     *
+     * @return \AppBundle\Entity\techSubTasks 
+     */
+    public function getTasksBySubTasks()
+    {
+        return $this->tasksBySubTasks;
+    }
 }

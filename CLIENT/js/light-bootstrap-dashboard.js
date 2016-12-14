@@ -56,7 +56,7 @@ lbd = {
             $sidebar = $('.sidebar');
             sidebar_color = $sidebar.data('color');
             $logo = $sidebar.find('.logo').first();
-            logo_content = $logo[0].outerHTML;
+           // logo_content = $logo[0].outerHTML;
             ul_content = '';
             $navbar.attr('data-color',sidebar_color);
             // add the content from the sidebar to the right menu
@@ -68,8 +68,8 @@ lbd = {
                 ul_content = ul_content + content_buff;   
             });
             ul_content = '<ul class="nav navbar-nav">' + ul_content + '</ul>';
-            navbar_content = logo_content + ul_content;
-            $navbar.html(navbar_content);
+          //  navbar_content = logo_content + ul_content;
+          //  $navbar.html(navbar_content);
             $('body').append($navbar);
             background_image = $sidebar.data('image');
             if(background_image != undefined){

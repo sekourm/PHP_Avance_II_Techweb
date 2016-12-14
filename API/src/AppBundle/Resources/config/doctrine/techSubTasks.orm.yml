@@ -23,3 +23,11 @@ AppBundle\Entity\techSubTasks:
     fields:
       description:
           type: string
+      active:
+          type: boolean
+          option:
+            defaults: 0
+      checked:
+          type: boolean
+          option:
+            defaults: 0

@@ -72,12 +72,36 @@
                                         ng-click="CreateProjets(projets)">Create Projets
                                 </button>
 
-                                <div ng-if="message" class="alert alert-danger">
-                                    <strong>{{message}}</strong>
-                                </div>
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-if="message" class="alert alert-danger">
+                            <strong>{{message}}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>Project Personnel</h2>
+                    <div class="col-md-2" ng-repeat="personnelProject in personnelProjects">
+                        <a href="#/projects/{{personnelProject.id}}/{{personnelProject.name}}" class="projects-link">
+                            <div class="panel panel-default project-link-height">
+                                <p style="padding: 10px">{{personnelProject.name}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>Project Partagé</h2>
+                    <div class="col-md-2" ng-repeat="projectsPartage in projectsPartages">
+                        <a href="#/projects/{{projectsPartage.projects_by_projects.id}}/{{projectsPartage.projects_by_projects.name}}" class="projects-link">
+                            <div class="panel panel-default project-link-height">
+                                <p style="padding: 10px">{{projectsPartage.projects_by_projects.name}}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

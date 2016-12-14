@@ -2,7 +2,7 @@ AppBundle\Entity\techSubTasksByUsers:
     type: entity
     table: t_tech_sub_tasks_users
     manyToOne:
-      subTasksBySubTasks:
+      tasksBySubTasks:
         targetEntity: techSubTasks
         inversedBy: tasksBySubTasks
         joinColumn:

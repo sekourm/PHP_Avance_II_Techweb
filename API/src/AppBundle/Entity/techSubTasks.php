@@ -125,4 +125,59 @@ class techSubTasks
     {
         return $this->tasksBySubTasks;
     }
+    /**
+     * @var boolean
+     */
+    private $active = 0;
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return techSubTasks
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+    /**
+     * @var boolean
+     */
+    private $checked = 0;
+
+
+    /**
+     * Set checked
+     *
+     * @param boolean $checked
+     * @return techSubTasks
+     */
+    public function setChecked($checked)
+    {
+        $this->checked = $checked;
+
+        return $this;
+    }
+
+    /**
+     * Get checked
+     *
+     * @return boolean 
+     */
+    public function getChecked()
+    {
+        return $this->checked;
+    }
 }
