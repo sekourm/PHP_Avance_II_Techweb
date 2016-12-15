@@ -16,12 +16,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#/profil">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
@@ -39,14 +33,6 @@
                     <a class="navbar-brand" href="#/dashboard">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <form class="navbar-form" role="search">
-                                <input type="text" class="form-control" placeholder="Search" name="search">
-                            </form>
-                        </li>
-                    </ul>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#">
@@ -96,7 +82,7 @@
                 <div class="row">
                     <h2>Project Partagé</h2>
                     <div class="col-md-2" ng-repeat="projectsPartage in projectsPartages">
-                        <a href="#/projects/{{projectsPartage.projects_by_projects.id}}/{{projectsPartage.projects_by_projects.name}}" class="projects-link">
+                        <a href="#/share/{{projectsPartage.projects_by_projects.id}}/{{projectsPartage.projects_by_projects.name}}" class="projects-link">
                             <div class="panel panel-default project-link-height">
                                 <p style="padding: 10px">{{projectsPartage.projects_by_projects.name}}</p>
                             </div>

@@ -125,4 +125,48 @@ class techTasks
     {
         return $this->tasksBySubTasks;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $usersIntasksByTasks;
+
+
+    /**
+     * Add usersIntasksByTasks
+     *
+     * @param \AppBundle\Entity\techSubTasks $usersIntasksByTasks
+     * @return techTasks
+     */
+    public function addUsersIntasksByTask(\AppBundle\Entity\techSubTasks $usersIntasksByTasks)
+    {
+        $this->usersIntasksByTasks[] = $usersIntasksByTasks;
+
+        return $this;
+    }
+
+    /**
+     * Remove usersIntasksByTasks
+     *
+     * @param \AppBundle\Entity\techSubTasks $usersIntasksByTasks
+     */
+    public function removeUsersIntasksByTask(\AppBundle\Entity\techSubTasks $usersIntasksByTasks)
+    {
+        $this->usersIntasksByTasks->removeElement($usersIntasksByTasks);
+    }
+
+    /**
+     * Get usersIntasksByTasks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsersIntasksByTasks()
+    {
+        return $this->usersIntasksByTasks;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $usersInTasksByTasks;
+
+
 }

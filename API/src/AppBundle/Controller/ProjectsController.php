@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\techProjects;
+use AppBundle\Entity\techProjectsByUsers;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Serializer;
@@ -24,10 +25,18 @@ class ProjectsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $post = json_decode($post);
         $projects = new techProjects();
+        $techUsersByProject = new techProjectsByUsers();
         $projects->setName($post->name);
         $projects->setProjectsUsers($em->getReference('AppBundle\Entity\techUsers', $post->userId));
         $em->persist($projects);
         $em->flush();
+
+        $projectId = $projects->getId();
+        $techUsersByProject->setProjectsByProjects($em->getReference('AppBundle\Entity\techProjects', $projectId));
+        $techUsersByProject->setUsersByProjects($em->getReference('AppBundle\Entity\techUsers', $post->userId));
+        $em->persist($techUsersByProject);
+        $em->flush();
+
         $response = new Response($serializer->serialize(array('message' => 'Création de projet réussit', 'creation' => 'true'), 'json'));
         return $response;
 
@@ -72,5 +81,29 @@ class ProjectsController extends Controller
         $response = new Response($serializer->serialize(array('message' => 'Création de catégorie réussit', 'creation' => 'true'), 'json'));
         return $response;
     }
+
+    public function addUserInProjectAction()
+    {
+        $techUsersByProject = new techProjectsByUsers();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $post = $this->getRequest()->getContent();
+        $post = json_decode($post);
+        $userId = $post->userId;
+        $projectId= $post->projectId;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $techUsersByProject->setProjectsByProjects($em->getReference('AppBundle\Entity\techProjects', $projectId));
+        $techUsersByProject->setUsersByProjects($em->getReference('AppBundle\Entity\techUsers', $userId));
+        $em->persist($techUsersByProject);
+        $em->flush();
+        $response = new Response($serializer->serialize(array('message' => 'utilisateur bien inserer', 'creation' => 'true'), 'json'));
+        return $response;
+    }
+
 
 }

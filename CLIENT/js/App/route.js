@@ -30,5 +30,13 @@ angular.module('myApp', ['ngRoute', 'naif.base64', 'ngSanitize', 'ngCookies','dn
                 templateUrl: 'templates/project.html',
                 controller: 'project'
             })
+            .when('/share/:id/:name', {
+                templateUrl: 'templates/share.html',
+                controller: 'share'
+            })
+            .when('/verification/:userId/:privateKey', {
+                templateUrl: 'templates/verification.html',
+                controller: 'verification'
+            })
             .otherwise({redirectTo: '/'});
     });

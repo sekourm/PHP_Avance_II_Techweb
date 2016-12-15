@@ -358,44 +358,7 @@ class techUsers
     {
         return $this->projectsByUsers;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $subTasksByUsers;
 
-
-    /**
-     * Add subTasksByUsers
-     *
-     * @param \AppBundle\Entity\techSubTasksByUsers $subTasksByUsers
-     * @return techUsers
-     */
-    public function addSubTasksByUser(\AppBundle\Entity\techSubTasksByUsers $subTasksByUsers)
-    {
-        $this->subTasksByUsers[] = $subTasksByUsers;
-
-        return $this;
-    }
-
-    /**
-     * Remove subTasksByUsers
-     *
-     * @param \AppBundle\Entity\techSubTasksByUsers $subTasksByUsers
-     */
-    public function removeSubTasksByUser(\AppBundle\Entity\techSubTasksByUsers $subTasksByUsers)
-    {
-        $this->subTasksByUsers->removeElement($subTasksByUsers);
-    }
-
-    /**
-     * Get subTasksByUsers
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSubTasksByUsers()
-    {
-        return $this->subTasksByUsers;
-    }
 
     public function insertCreatedAtAuto()
     {
@@ -405,5 +368,43 @@ class techUsers
     public function insertUpdateAtAuto()
     {
         return $this->setUpdatedAt(new \DateTime());
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tasksByUsers;
+
+
+    /**
+     * Add tasksByUsers
+     *
+     * @param \AppBundle\Entity\techTasksByUsers $tasksByUsers
+     * @return techUsers
+     */
+    public function addTasksByUser(\AppBundle\Entity\techTasksByUsers $tasksByUsers)
+    {
+        $this->tasksByUsers[] = $tasksByUsers;
+
+        return $this;
+    }
+
+    /**
+     * Remove tasksByUsers
+     *
+     * @param \AppBundle\Entity\techTasksByUsers $tasksByUsers
+     */
+    public function removeTasksByUser(\AppBundle\Entity\techTasksByUsers $tasksByUsers)
+    {
+        $this->tasksByUsers->removeElement($tasksByUsers);
+    }
+
+    /**
+     * Get tasksByUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTasksByUsers()
+    {
+        return $this->tasksByUsers;
     }
 }

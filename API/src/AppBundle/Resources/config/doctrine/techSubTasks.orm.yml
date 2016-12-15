@@ -1,10 +1,6 @@
 AppBundle\Entity\techSubTasks:
     type: entity
     table: t_tech_sub_tasks
-    oneToMany:
-        tasksBySubTasks:
-              targetEntity: techSubTasksByUsers
-              mappedBy: tasksBySubTasks
     manyToOne:
       subTasksByTasks:
         targetEntity: techTasks

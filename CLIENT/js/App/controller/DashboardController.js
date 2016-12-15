@@ -15,8 +15,18 @@ angular.module('myApp')
         }).then(function successCallback(data) {
           $scope.personnelProjects = data.data[0].users_projects;
           $scope.projectsPartages = data.data[0].projects_by_users;
-          console.log($scope.projectsPartages);
 
+
+        /*  for(var k= 0; k < $scope.projectsPartages.length;k++){
+            //  console.log($scope.projectsPartages[k].projects_by_projects);
+              for(var j = 0; j< $scope.personnelProjects.length;j++){
+
+                  if($scope.projectsPartages[k].projects_by_projects.id != $scope.personnelProjects[j].id){
+                      console.log($scope.projectsPartages[k].projects_by_projects);
+                      //$scope.projectsPartages[k].projects_by_projects.splice(h, 1);
+                  }
+              }
+          }*/
 
         }, function errorCallback(error) {
             console.log('error');

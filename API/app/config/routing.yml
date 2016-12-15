@@ -2,6 +2,10 @@ login:
   path: /authentification/profiles
   defaults:  { _controller: AppBundle:Profiles:authentificationProfiles }
 
+VerifyAccount:
+  path: /Verify/Account/{userId}/{privateKey}
+  defaults:  { _controller: AppBundle:Profiles:VerifyAccount }
+
 register:
   path: /add/profiles
   defaults:  { _controller: AppBundle:Profiles:addProfiles }
@@ -37,3 +41,19 @@ createSubTasks:
 updateCheckedSubtasks:
   path: update/checked/subtasks
   defaults:  { _controller: AppBundle:Tasks:updateCheckedSubTasks }
+
+checkCategorie:
+  path: /check/categorie/{projectId}/{name}
+  defaults:  { _controller: AppBundle:Categories:checkCategorie }
+
+searchUser:
+  path: /search/users
+  defaults:  { _controller: AppBundle:Profiles:searchUser }
+
+addUserInProject:
+  path: /add/users/inProjects
+  defaults:  { _controller: AppBundle:Projects:addUserInProject }
+
+addUserInTask:
+  path: /add/users/inTasks
+  defaults:  { _controller: AppBundle:Tasks:addUserInTasks }

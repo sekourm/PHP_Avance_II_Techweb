@@ -1,0 +1,24 @@
+AppBundle\Entity\techTasksByUsers:
+    type: entity
+    table: t_tech_tasks_users
+    manyToOne:
+      tasksByTasksInUsers:
+        targetEntity: techTasks
+        inversedBy: usersInTasksByTasks
+        joinColumn:
+            name: tasksId
+            referencedColumnName: id
+      usersByTasks:
+        targetEntity: techUsers
+        inversedBy: tasksByUsers
+        joinColumn:
+            name: UserId
+            referencedColumnName: id
+    repositoryClass: AppBundle\Repository\techTasksByUsersRepository
+    id:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+    lifecycleCallbacks: {  }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\techTasksByUsers;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -137,6 +138,41 @@ class TasksController extends Controller
         $em->flush();
 
         $response = new Response($serializer->serialize(array('message'=>'update check avec succées'), 'json'));
+        return $response;
+    }
+
+
+
+    public function addUserInTasksAction()
+    {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $post = $this->getRequest()->getContent();
+        $post = json_decode($post);
+        $taskId = $post->taskId;
+        $userId =$post->userId;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $techTasksByUsers = $em->getRepository('AppBundle:techTasksByUsers')->findBy(array());
+
+        for($i=0;$i<count($techTasksByUsers);$i++)
+        {
+            if ($techTasksByUsers[$i]->getUsersByTasks()->getId() == $userId && $techTasksByUsers[$i]->getTasksByTasksInUsers()->getId() == $taskId){
+                $response = new Response($serializer->serialize(array('message'=>'alreadey inside','creation' => 'false'), 'json'));
+                return $response;
+            }
+        }
+
+        $insert = new techTasksByUsers();
+        $insert->setUsersByTasks($em->getReference('AppBundle\Entity\techUsers',$userId));
+        $insert->setTasksByTasksInUsers($em->getReference('AppBundle\Entity\techTasks',$taskId));
+        $em->persist($insert);
+        $em->flush();
+
+        $response = new Response($serializer->serialize(array('message'=>'update check avec succées','creation' => 'true'),'json'));
         return $response;
     }
 
