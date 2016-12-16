@@ -2,7 +2,10 @@
 
 add parameter yml 
 
-<pre># This file is auto-generated during the composer install
+<pre>
+
+# This file is auto-generated during the composer install
+
 parameters:
     database_host: 127.0.0.1
     database_port: null
@@ -16,4 +19,5 @@ parameters:
     secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     
 exemple secret_code: db3fb20746f395a44d08e8465e7770bdf3b43c6d
+
 </pre>
