@@ -2,7 +2,7 @@
     <div class="container login-main">
         <div class="opacity">
             <div class="user-img">
-                <img ng-src="http://previews.123rf.com/images/maxborovkov/maxborovkov1507/maxborovkov150700243/42795794-White-welcome-sign-over-confetti-background-Vector-holiday-illustration--Stock-Vector.jpg"
+                <img ng-src="https://static7.easyworship.com/previews/images/large/70177.jpg"
                      id="login-image" class="img-circle user-img img-thumbnail" alt="">
             </div>
             <div class="col-md-8 login-form">
@@ -18,16 +18,16 @@
                                placeholder="your password" id="login-pass" autocomplete="new-password">
                         <label for="login-pass" class="login-pass"><i class="glyphicon glyphicon-lock"></i></label>
                     </div>
+                    <div class="form-group">
+                        <a class="btn btn-lg btn-block" ng-click="tryToLogin(email,password)">Connexion</a>
+                    </div>
 
                     <div ng-if="message" class="alert alert-danger">
                         <strong>{{message}}</strong>
                     </div>
 
-                    <div class="form-group">
-                        <a class="btn btn-lg btn-block" ng-click="tryToLogin(email,password)">Connexion</a>
-                    </div>
                 </form>
-                <div class="col-md-12">
+                <div class="col-md-12 background-link">
                     <a ng-href="#/register" class="link">S'inscrire</a>
                 </div>
             </div>

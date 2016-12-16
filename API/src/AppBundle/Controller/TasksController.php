@@ -161,7 +161,7 @@ class TasksController extends Controller
         for($i=0;$i<count($techTasksByUsers);$i++)
         {
             if ($techTasksByUsers[$i]->getUsersByTasks()->getId() == $userId && $techTasksByUsers[$i]->getTasksByTasksInUsers()->getId() == $taskId){
-                $response = new Response($serializer->serialize(array('message'=>'alreadey inside','creation' => 'false'), 'json'));
+                $response = new Response($serializer->serialize(array('message'=>'Utilisateur déjà dans la tâche','creation' => 'false'), 'json'));
                 return $response;
             }
         }

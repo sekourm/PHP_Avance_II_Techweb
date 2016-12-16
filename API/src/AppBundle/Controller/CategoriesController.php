@@ -40,6 +40,7 @@ class CategoriesController extends Controller
         $accessor = PropertyAccess::createPropertyAccessor();
         $test = $check[0]->getUsersByProjects()->getValues();
         $TabEmail = [];
+
         for($i = 0; $i< count($test); $i++){
             $TabEmail[] = $accessor->getValue($test[$i]->getUsersByProjects()->getProjectsByUsers()->getValues()[0]->getUsersByProjects(),'email');
         };
@@ -48,14 +49,11 @@ class CategoriesController extends Controller
         for($k = 0; $k <count($TabEmail); $k++){
 
             $message = \Swift_Message::newInstance()
-                ->setSubject("Confirmation d'inscription Instant View")
-                ->setFrom('InstantView@confirmation.fr')
+                ->setSubject("Une Catégorie a été crée")
+                ->setFrom('techWeb@confirmation.fr')
                 ->setTo($TabEmail[$k])
                 ->setBody($this->renderView('Categories/categories.html.twig', array('username' => 'sa marche')), 'text/html');
             $this->get('mailer')->send($message);
-
-
-            dump($TabEmail[$k]);
         }
 
 
@@ -81,8 +79,8 @@ class CategoriesController extends Controller
         for($k = 0; $k <count($TabEmail); $k++){
 
             $message = \Swift_Message::newInstance()
-                ->setSubject("Confirmation d'inscription Instant View")
-                ->setFrom('InstantView@confirmation.fr')
+                ->setSubject("Une Catégorie a été crée")
+                ->setFrom('techWeb@confirmation.fr')
                 ->setTo($TabEmail[$k])
                 ->setBody($this->renderView('Categories/categories.html.twig', array('username' => 'sa marche')), 'text/html');
             $this->get('mailer')->send($message);

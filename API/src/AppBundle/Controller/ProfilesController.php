@@ -62,8 +62,8 @@ class ProfilesController extends Controller
         $user_id = $profiles->getId();
 
         $message = \Swift_Message::newInstance()
-            ->setSubject("Confirmation d'inscription Instant View")
-            ->setFrom('InstantView@confirmation.fr')
+            ->setSubject("Confirmation d'inscription techWeb")
+            ->setFrom('techWeb@confirmation.fr')
             ->setTo($email)
             ->setBody($this->renderView('Emails/registration.html.twig', array('username' => $username, 'user_id' => $user_id, 'private_key' => $privateKey)), 'text/html');
         $this->get('mailer')->send($message);

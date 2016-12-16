@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('dashboard', function ($scope, $http, $window, $rootScope, $cookieStore, $location) {
+    .controller('dashboard', function ($scope, $http, $window, $rootScope, $cookieStore, $location, $timeout, $route) {
         console.log("controller dashboard charge");
 
         var myId = $cookieStore.get('myId');
@@ -13,33 +13,28 @@ angular.module('myApp')
             method: 'POST', url: link, data: data,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function successCallback(data) {
-          $scope.personnelProjects = data.data[0].users_projects;
-          $scope.projectsPartages = data.data[0].projects_by_users;
+            $scope.personnelProjects = data.data[0].users_projects;
+            $scope.projectsPartages = data.data[0].projects_by_users;
 
-
-        /*  for(var k= 0; k < $scope.projectsPartages.length;k++){
-            //  console.log($scope.projectsPartages[k].projects_by_projects);
-              for(var j = 0; j< $scope.personnelProjects.length;j++){
-
-                  if($scope.projectsPartages[k].projects_by_projects.id != $scope.personnelProjects[j].id){
-                      console.log($scope.projectsPartages[k].projects_by_projects);
-                      //$scope.projectsPartages[k].projects_by_projects.splice(h, 1);
-                  }
-              }
-          }*/
+            for (var k = 0; k < $scope.projectsPartages.length; k++) {
+                for (var j = 0; j < $scope.personnelProjects.length; j++) {
+                    if ($scope.projectsPartages[k].projects_by_projects.id == $scope.personnelProjects[j].id) {
+                        $scope.projectsPartages.splice(k, 1);
+                    }
+                }
+            }
 
         }, function errorCallback(error) {
             console.log('error');
         });
 
         $scope.CreateProjets = function (projets) {
-            console.log(projets);
-            if(projets != undefined){
-               if (projets.length < 5 || projets.length > 20) {
+            if (projets != undefined) {
+                if (projets.length < 5 || projets.length > 20) {
                     $scope.message = "Votre Projets doit contenir entre 5 et 20 caractères.";
                     return;
                 }
-            } else{
+            } else {
                 $scope.message = "Votre Projets doit contenir entre 5 et 20 caractères.";
                 return;
             }
@@ -50,6 +45,11 @@ angular.module('myApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function successCallback(data) {
                 console.log(data);
+
+                $timeout(function () {
+                    $route.reload();
+                }, 0);
+
             }, function errorCallback(error) {
                 console.log('error');
             });

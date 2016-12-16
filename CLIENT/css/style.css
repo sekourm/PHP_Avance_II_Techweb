@@ -160,12 +160,13 @@ a:hover{
 
 #login-main::after {
     content: "";
-    background-image: url(https://wallpaperscraft.com/image/glasses_book_table_cover_67503_1920x1080.jpg);
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+    /*background-image: url(https://wallpaperscraft.com/image/glasses_book_table_cover_67503_1920x1080.jpg);*/
+    background-image: url(http://imgview.info/download/20160127/wood-notebook-vintage-whitespace-old-glasses-classic-typewriter-workspace-notepad-color-sudes-vintage-2880x1800.jpg);
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
     top: 0;
     left: 0;
     bottom: 0;
@@ -257,25 +258,31 @@ a:hover{
 }
 
 #login-main .btn-block {
-    background: #b82e8d;
-    border: 7px outset #b82e8d;
+    background: #4b756b;
+    border: 7px outset #4b756b;
     color: white;
     border-radius: 3px;
 }
 
 #login-main .btn-block:hover {
     background: white;
-    color: #b82e8d;
-    border: 7px outset #b82e8d;
+    color: #4b756b !important;
+    border: 7px outset #4b756b;
 }
 .link{
     font-size: 25px;
-    color: white;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .link a:focus, a:hover{
-    text-decoration: none!important;
-    color: white;
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.background-link
+{
+    background-color: #4b756b;
 }
 
 #login-main .login-link {
@@ -466,7 +473,7 @@ input[type=checkbox]:checked + label:before {
 .opacity{
     width: 50%;
     margin: auto;
-    height: 500px;
+    height: 580px;
     background-color: rgba(0,0,0,0.2)    /* 10% opaque red */  ;
 
     padding-top: 20px;
@@ -474,7 +481,7 @@ input[type=checkbox]:checked + label:before {
 .opacity-register{
     width: 50%;
     margin: auto;
-    height: 580px;
+    height: 650px;
     background-color: rgba(0,0,0,0.2)    /* 10% opaque red */  ;
 
     padding-top: 20px;
